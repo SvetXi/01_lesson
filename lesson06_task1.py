@@ -11,9 +11,9 @@ button = driver.find_element(By.ID, "ajaxButton")
 button.click()
 
 # Дождаться появления зеленой плашки с текстом
-ajax_text = WebDriverWait(driver, 10).until(
-    EC.visibility_of_element_located((By.CLASS_NAME, "bg-success"))
+ajax_text = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "bg-success"))
 ).text
-print(ajax_text)  # Ожидается: "Data loaded with AJAX get request."
+print(ajax_text)  
+# Ожидается: "Data loaded with AJAX get request."
 
 driver.quit()
