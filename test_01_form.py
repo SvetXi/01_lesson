@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 def driver():
     options = EdgeOptions()
     # Запуск браузера Edge
-    service = EdgeService(executable_path="путь_к_драйверу")
+    service = EdgeService()
     driver = webdriver.Edge(service=service, options=options)
     driver.maximize_window()
     yield driver
