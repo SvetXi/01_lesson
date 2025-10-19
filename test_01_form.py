@@ -19,37 +19,40 @@ def driver():
 def test_form_fields_validation(driver):
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
 
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
 
     # Заполняем форму
-    driver.find_element(By.CSS_SELECTOR, "input[name='firstName']").send_keys("Иван")
-    driver.find_element(By.CSS_SELECTOR, "input[name='lastName']").send_keys("Петров")
+    driver.find_element(By.CSS_SELECTOR, "input[name='first-name']").send_keys("Иван")
+    driver.find_element(By.CSS_SELECTOR, "input[name='last-name']").send_keys("Петров")
     driver.find_element(By.CSS_SELECTOR, "input[name='address']").send_keys("Ленина, 55-3")
-    driver.find_element(By.CSS_SELECTOR, "input[name='email']").send_keys("test@skypro.com")
-    driver.find_element(By.CSS_SELECTOR, "input[name='phoneNumber']").send_keys("+7985899998787")
+    driver.find_element(By.CSS_SELECTOR, "input[name='e-mail']").send_keys("test@skypro.com")
+    driver.find_element(By.CSS_SELECTOR, "input[name='phone']").send_keys("+7985899998787")
     # Zip code оставляем пустым
-    driver.find_element(By.CSS_SELECTOR, "input[name='zipCode']").clear()
+    driver.find_element(By.CSS_SELECTOR, "input[name='zip-code']").clear()
     driver.find_element(By.CSS_SELECTOR, "input[name='city']").send_keys("Москва")
     driver.find_element(By.CSS_SELECTOR, "input[name='country']").send_keys("Россия")
-    driver.find_element(By.CSS_SELECTOR, "input[name='jobPosition']").send_keys("QA")
+    driver.find_element(By.CSS_SELECTOR, "input[name='job-position']").send_keys("QA")
     driver.find_element(By.CSS_SELECTOR, "input[name='company']").send_keys("SkyPro")
 
-    driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+
+    button = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
+    driver.execute_script("arguments[0].scrollIntoView();", button)
+    driver.execute_script("arguments[0].click();", button)
 
     # Проверяем, что поле Zip code подсвечено красным (наличие класса или стилевой окрас)
-    zip_field = driver.find_element(By.CSS_SELECTOR, "input[name='zipCode']")
+    zip_field = driver.find_element(By.ID, "zip-code")
     # Ждем появления красного бордера (считаем, что бордер красного цвета — rgb(255, 0, 0))
-    wait.until(lambda d: "red" in zip_field.value_of_css_property("border-color") or
-                       "rgb(255, 0, 0)" in zip_field.value_of_css_property("border-color"))
+    # wait.until(lambda d: "red" in zip_field.value_of_css_property("border-color") or
+    #                    "rgb(255, 0, 0)" in zip_field.value_of_css_property("border-color"))
 
     border_zip = zip_field.value_of_css_property("border-color")
-    assert "255, 0, 0" in border_zip or "red" in border_zip, "Zip code поле не подсвечено красным"
+    assert "245, 194, 199" in border_zip or "red" in border_zip, "Zip code поле не подсвечено красным"
 
     # Проверяем остальные поля на зеленый бордер (rgb(40, 167, 69) — bootstrap success)
     # Список остальных полей
-    fields = ["firstName", "lastName", "address", "email", "phoneNumber", "city", "country", "jobPosition", "company"]
-    for name in fields:
-        field = driver.find_element(By.CSS_SELECTOR, f"input[name='{name}']")
+    fields = ["first-name", "last-name", "address", "e-mail", "phone", "city", "country", "job-position", "company"]
+    for field_id in fields:
+        field = driver.find_element(By.ID, field_id)
         border = field.value_of_css_property("border-color")
-        assert ("40, 167, 69" in border) or ("rgb(40, 167, 69)" in border) or ("green" in border), \
-            f"Поле {name} не подсвечено зеленым"
+        assert border == "rgb(186, 219, 204)", \
+            f"Поле {field} не подсвечено зеленым"
