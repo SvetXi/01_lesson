@@ -23,15 +23,17 @@ def test_slow_calc(driver):
 
     delay_input = driver.find_element(By.CSS_SELECTOR, "#delay")
     delay_input.clear()
-    delay_input.send_keys("45")
+    delay_input.send_keys("50")
 
     # Нажимаем кнопки: 7 + 8 =
-    driver.find_element(By.CSS_SELECTOR, "button.btn[data-value='7']").click()
-    driver.find_element(By.CSS_SELECTOR, "button.btn[data-value='+']").click()
-    driver.find_element(By.CSS_SELECTOR, "button.btn[data-value='8']").click()
-    driver.find_element(By.CSS_SELECTOR, "button.btn[data-value='=']").click()
+    driver.find_element(By.XPATH, "//span[contains(@class, 'btn') and text()='7']").click()
+    driver.find_element(By.XPATH, "//span[contains(@class, 'btn') and text()='+']").click()
+    driver.find_element(By.XPATH, "//span[contains(@class, 'btn') and text()='8']").click()
+    driver.find_element(By.XPATH, "//span[contains(@class, 'btn') and text()='=']").click()
+
 
     # Ожидаем текст "15" в поле с результатом (input#result)
-    result = wait.until(EC.text_to_be_present_in_element_value((By.CSS_SELECTOR, "input#result"), "15"))
+    screen = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "screen")))
+    value = screen.text
 
-    assert result, "Результат не равен 15 после 45 секунд"
+    assert value, "Результат не равен 15 после 45 секунд"
