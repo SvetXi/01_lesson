@@ -58,4 +58,3 @@ def test_sauce_demo_purchase(driver):
     total_text = total_elem.text  # строка вида: "Total: $58.29"
 
     assert total_text == "Total: $58.29", f"Итоговая сумма некорректна: {total_text}"
-  
