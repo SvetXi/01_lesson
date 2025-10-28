@@ -12,9 +12,9 @@ class InformPage:
 
     def inform(self):
         first_name = self.driver.find_element(By.CSS_SELECTOR, "input[name='firstName']")
-        first_name.send_keys("Мария")
+        first_name.send_keys("Светлана")
         last_name = self.driver.find_element(By.CSS_SELECTOR, "input[name='lastName']")
-        last_name.send_keys("Ботнарь")
+        last_name.send_keys("Хисматуллина")
         zp_code = self.driver.find_element(By.CSS_SELECTOR, "input[name='postalCode']")
         zp_code.send_keys("292940")
         cont = self.driver.find_element(By.CSS_SELECTOR, "input[class='submit-button btn btn_primary cart_button btn_action']")
