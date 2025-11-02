@@ -3,7 +3,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from Lesson_07.form_01.pages.form_page import FormPage
+from Lesson7.calc_02.form_01.pages.form_page import FormPage
 
 @allure.feature("Тестирование формы")
 @allure.severity(allure.severity_level.CRITICAL)
