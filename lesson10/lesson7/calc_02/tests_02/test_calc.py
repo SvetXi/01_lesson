@@ -3,7 +3,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from Lesson_07.calc_02.pages.CalcPage import CalcPage
+from Lesson7.calc_02.pages.CalcPage import CalcPage
 
 @allure.feature("Тестирование калькулятора")
 @allure.severity(allure.severity_level.CRITICAL)
