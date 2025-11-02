@@ -3,10 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-from Lesson_07.shop_03.pages.LoginPage import LoginPage
-from Lesson_07.shop_03.pages.CartPage import CartPage
-from Lesson_07.shop_03.pages.InformPage import InformPage
-from Lesson_07.shop_03.pages.OverviewPage import OverviewPage
+from Lesson7.calc_02.shop_03.pages.LoginPage import LoginPage
+from Lesson7.calc_02.shop_03.pages.CartPage import CartPage
+from Lesson7.calc_02.shop_03.pages.InformPage import InformPage
+from Lesson7.calc_02.shop_03.pages.OverviewPage import OverviewPage
 
 @allure.title("Сквозной тест покупки товара")
 @allure.description("Тест проверяет полный сценарий покупки товара: авторизация, добавление в корзину, заполнение информации и проверка итоговой суммы.")
