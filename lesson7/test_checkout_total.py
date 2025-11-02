@@ -6,10 +6,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-from Lesson_07.shop_03.pages.LoginPage import LoginPage
-from Lesson_07.shop_03.pages.CartPage import CartPage
-from Lesson_07.shop_03.pages.InformPage import InformPage
-from Lesson_07.shop_03.pages.OverviewPage import OverviewPage
+from Lesson7.LoginPage import LoginPage
+from Lesson7.CartPage import CartPage
+from Lesson7.InformPage import InformPage
+from Lesson7.OverviewPage import OverviewPage
 
 
 def test_shop():
