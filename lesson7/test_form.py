@@ -1,9 +1,7 @@
-from time import sleep
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from Lesson_07.form_01.pages.form_page import FormPage
-
+    form_page.complete_the_form()
+    form_page.sublime_click()
+    form_page.zip_code_red()
+    form_page.other_green()
 
 def test_complete_the_form():
     # Инициализация драйвера
@@ -17,5 +15,8 @@ def test_complete_the_form():
     form_page.sublime_click()
     form_page.zip_code_red()
 
+    # Закрытие браузера
+    driver.quit()
+    
     # Закрытие браузера
     driver.quit()
