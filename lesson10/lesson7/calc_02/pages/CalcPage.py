@@ -44,8 +44,3 @@ class CalcPage:
         """
         result = self.driver.find_element(By.CSS_SELECTOR, ".screen").text
         assert int(result) == 15, f"Expected result 15, but got {result}"
-        WebDriverWait(self.driver, 46).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".screen"), "15"))
-
-    def result(self):
-        result = self.driver.find_element(By.CSS_SELECTOR, ".screen").text
-        assert int(result) == 15
